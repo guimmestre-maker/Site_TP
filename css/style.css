@@ -1,0 +1,244 @@
+/* VARIÁVEIS GLOBAIS */
+:root {
+
+    /* Categorias */
+    --cat-alkali-metals:          #ef5350;
+    --cat-alkaline-earth-metals:  #ff8a65;
+    --cat-transition-metals:      #ffd54f;
+    --cat-post-transition-metals: #81c784;
+    --cat-metalloids:             #4dd0e1;
+    --cat-reactive-nonmetals:     #64b5f6;
+    --cat-noble-gases:            #ce93d8;
+    --cat-lanthanides:            #f48fb1;
+    --cat-actinides:              #ffab91;
+    --cat-unknown-properties:     #90a4ae;
+
+    /* Cores de fundo */
+    --bg-page:      #ffffff;
+    --bg-surface:   #f5f5f5;
+    --bg-card:      #f0f0f0;
+    --bg-hover:     #e8e8e8;
+
+    /* Cores de texto */
+    --text-primary:   #111111;
+    --text-secondary: #555555;
+    --text-muted:     #999999;
+
+    /* Cores de interface */
+    --border:         #dddddd;
+    --accent:         #000000;
+
+    /* Tipografia */
+    --font-sans: 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+
+    --text-xs:   0.7rem;
+    --text-sm:   0.85rem;
+    --text-base: 1rem;
+    --text-lg:   1.25rem;
+    --text-xl:   1.5rem;
+    --text-2xl:  2rem;
+
+    /* Espaçamentos */
+    --space-1:  0.25rem;
+    --space-2:  0.5rem;
+    --space-3:  0.75rem;
+    --space-4:  1rem;
+    --space-6:  1.5rem;
+    --space-8:  2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Células da tabela periódica */
+    --cell-size:       64px;
+        --cell-size-sm:    44px;   /* mobile */
+    --cell-gap:        4px;
+    --cell-radius:     6px;
+    --cell-symbol-size: 1.4rem;
+    --cell-number-size: 0.6rem;
+    --cell-name-size:   0.5rem;
+
+    /* Misc */
+    --radius:     6px;
+    --radius-lg:  12px;
+    --transition: 0.2s ease;
+}
+
+/* RESET */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BASE */
+body {
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1; }
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+a:hover { color: var(--text-primary); }
+
+/* NAV */
+nav {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 var(--space-8);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+}
+.nav-logo span { color: var(--text-secondary); font-weight: 400; }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: var(--space-1);
+}
+.nav-links a {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+    background: var(--border);
+}
+
+
+/* FOOTER */
+footer {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    padding: var(--space-4) var(--space-8);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+
+/* ABOUT PAGE */
+.about-main,.about-split { 
+    display: flex;
+}
+.about-split { 
+    flex: 1; 
+}
+.about-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-side + .about-side {
+    border-left: 1px solid var(--border);
+}
+.about-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    text-align: center;
+    max-width: 320px;
+    width: 100%;
+}
+.about-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-secondary);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.about-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.about-name {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.about-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+.about-course {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+.about-links {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+.about-links a {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    transition: var(--transition);
+}
+.about-links a:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    .nav-links a { padding: var(--space-3) var(--space-4); }
+
+    .about-split { flex-direction: column; }
+    .about-side + .about-side {
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+}
