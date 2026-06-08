@@ -11,7 +11,7 @@
     --cat-noble-gases:            #ce93d8;
     --cat-lanthanides:            #f48fb1;
     --cat-actinides:              #ffab91;
-    --cat-unknown-properties:     #90a4ae;
+    --cat-unknown-properties:     #867474;
 
     /* Cores de fundo */
     --bg-page:      #ffffff;
@@ -50,13 +50,13 @@
     --space-16: 4rem;
 
     /* Células da tabela periódica */
-    --cell-size:       64px;
-        --cell-size-sm:    44px;   /* mobile */
+    --cell-size:   61px;
+    --cell-size-sm:    44px;
     --cell-gap:        4px;
     --cell-radius:     6px;
-    --cell-symbol-size: 1.4rem;
-    --cell-number-size: 0.6rem;
-    --cell-name-size:   0.5rem;
+    --cell-symbol-size: calc(var(--cell-size) * 0.34);
+    --cell-number-size: calc(var(--cell-size) * 0.18);
+    --cell-name-size:   calc(var(--cell-size) * 0.13);
 
     /* Misc */
     --radius:     6px;
@@ -118,7 +118,9 @@ nav {
     color: var(--accent);
     letter-spacing: 0.04em;
 }
-.nav-logo span { color: var(--text-secondary); font-weight: 400; }
+.nav-logo span { 
+    color: var(--text-secondary); font-weight: 400; 
+}
 
 .nav-links {
     list-style: none;
@@ -234,9 +236,13 @@ footer {
     .nav-links {
         flex-direction: column;
     }
-    .nav-links a { padding: var(--space-3) var(--space-4); }
+    .nav-links a { 
+        padding: var(--space-3) var(--space-4); 
+    }
 
-    .about-split { flex-direction: column; }
+    .about-split { 
+        flex-direction: column; 
+    }
     .about-side + .about-side {
         border-left: none;
         border-top: 1px solid var(--border);

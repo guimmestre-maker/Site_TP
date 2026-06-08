@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
-    cursor: default;
+    cursor: pointer;
     transition: filter var(--transition), transform var(--transition);
 }
 .cell:hover { 
@@ -47,7 +47,6 @@
 /* TABELA PERIÓDICA — GRELHA */
 .periodic-table-wrapper {
     padding: var(--space-8);
-    overflow-x: auto;
 }
 .periodic-table {
     display: grid;
@@ -57,3 +56,263 @@
     width: max-content;
     margin: 0 auto;
 }
+
+/* BOTÕES DE NAVEGAÇÃO DE CATEGORIAS */
+.cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+    padding: 0 var(--space-8) var(--space-6);
+}
+.cat-nav-btn {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: #000;
+    transition: filter var(--transition), transform var(--transition);
+}
+.cat-nav-btn:hover {
+    filter: brightness(1.12);
+    transform: scale(1.04);
+    color: #000;
+}
+
+/* LEGENDA DE CATEGORIAS */
+.cat-radio { display: none; }
+
+.cat-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+    padding: var(--space-4) var(--space-8) var(--space-8);
+}
+
+.cat-legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    user-select: none;
+}
+.cat-legend-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+.cat-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* Botão Todos ativo */
+#f-all:checked ~ .cat-legend label[for="f-all"] {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Item ativo na legenda */
+#f-alkali-metals:checked          ~ .cat-legend label[for="f-alkali-metals"],
+#f-alkaline-earth-metals:checked  ~ .cat-legend label[for="f-alkaline-earth-metals"],
+#f-transition-metals:checked      ~ .cat-legend label[for="f-transition-metals"],
+#f-post-transition-metals:checked ~ .cat-legend label[for="f-post-transition-metals"],
+#f-metalloids:checked             ~ .cat-legend label[for="f-metalloids"],
+#f-reactive-nonmetals:checked     ~ .cat-legend label[for="f-reactive-nonmetals"],
+#f-noble-gases:checked            ~ .cat-legend label[for="f-noble-gases"],
+#f-lanthanides:checked            ~ .cat-legend label[for="f-lanthanides"],
+#f-actinides:checked              ~ .cat-legend label[for="f-actinides"],
+#f-unknown-properties:checked     ~ .cat-legend label[for="f-unknown-properties"] {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Quando filtro ativo: torna todas as células cinzentas */
+#f-alkali-metals:checked          ~ .periodic-table-wrapper .cell,
+#f-alkaline-earth-metals:checked  ~ .periodic-table-wrapper .cell,
+#f-transition-metals:checked      ~ .periodic-table-wrapper .cell,
+#f-post-transition-metals:checked ~ .periodic-table-wrapper .cell,
+#f-metalloids:checked             ~ .periodic-table-wrapper .cell,
+#f-reactive-nonmetals:checked     ~ .periodic-table-wrapper .cell,
+#f-noble-gases:checked            ~ .periodic-table-wrapper .cell,
+#f-lanthanides:checked            ~ .periodic-table-wrapper .cell,
+#f-actinides:checked              ~ .periodic-table-wrapper .cell,
+#f-unknown-properties:checked     ~ .periodic-table-wrapper .cell {
+    filter: grayscale(1) brightness(1);
+}
+
+/* Categoria selecionada mantém as cores normais */
+#f-alkali-metals:checked          ~ .periodic-table-wrapper [style*="var(--cat-alkali-metals)"]          { filter: none; }
+#f-alkaline-earth-metals:checked  ~ .periodic-table-wrapper [style*="var(--cat-alkaline-earth-metals)"]  { filter: none; }
+#f-transition-metals:checked      ~ .periodic-table-wrapper [style*="var(--cat-transition-metals)"]      { filter: none; }
+#f-post-transition-metals:checked ~ .periodic-table-wrapper [style*="var(--cat-post-transition-metals)"] { filter: none; }
+#f-metalloids:checked             ~ .periodic-table-wrapper [style*="var(--cat-metalloids)"]             { filter: none; }
+#f-reactive-nonmetals:checked     ~ .periodic-table-wrapper [style*="var(--cat-reactive-nonmetals)"]     { filter: none; }
+#f-noble-gases:checked            ~ .periodic-table-wrapper [style*="var(--cat-noble-gases)"]            { filter: none; }
+#f-lanthanides:checked            ~ .periodic-table-wrapper [style*="var(--cat-lanthanides)"]            { filter: none; }
+#f-actinides:checked              ~ .periodic-table-wrapper [style*="var(--cat-actinides)"]              { filter: none; }
+#f-unknown-properties:checked     ~ .periodic-table-wrapper [style*="var(--cat-unknown-properties)"]     { filter: none; }
+
+/* TOOLTIPS AO HOVER */
+.cell { position: relative; }
+
+.cell:hover::after {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 5px 10px;
+    font-size: var(--text-xs);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 300;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    pointer-events: none;
+}
+
+/* Linhas 1-3: tooltip aparece abaixo */
+[style*=";grid-row:1;"]:hover::after,
+[style*=";grid-row:2;"]:hover::after,
+[style*=";grid-row:3;"]:hover::after { bottom: auto; top: calc(100% + 6px); }
+
+/* Período 1 */
+[style*="grid-column:1;grid-row:1;"]:hover::after { content: "O hidrogênio é o elemento mais abundante no universo,\Aconstituindo cerca de 75% da sua massa.\A\ASímbolo: H\AMassa atômica: 1.008 u\ADensidade: 0.071 g/cm³\AFusão: -259.16 °C\AEbulição: -252.88 °C\ADescoberto por: Henry Cavendish\AAno de descoberta: 1766"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:1;"]:hover::after { content: "O hélio é o segundo elemento mais abundante no universo\Ae é obtido principalmente do gás natural.\A\ASímbolo: He\AMassa atômica: 4.003 u\ADensidade: 0.125 g/cm³\AFusão: -272.20 °C\AEbulição: -268.93 °C\ADescoberto por: Pierre Janssen, Norman Lockyer\AAno de descoberta: 1868"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 2 */
+[style*="grid-column:1;grid-row:2;"]:hover::after { content: "O lítio é o metal sólido menos denso e é essencial\Anas baterias de iões de lítio modernas.\A\ASímbolo: Li\AMassa atômica: 6.941 u\ADensidade: 0.534 g/cm³\AFusão: 180.54 °C\AEbulição: 1342 °C\ADescoberto por: Johan August Arfwedson\AAno de descoberta: 1817"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:2;"]:hover::after { content: "O berílio é um metal leve e rígido usado na indústria\Aaeoespacial e em instrumentos de precisão.\A\ASímbolo: Be\AMassa atômica: 9.012 u\ADensidade: 1.848 g/cm³\AFusão: 1287 °C\AEbulição: 2469 °C\ADescoberto por: Louis Nicolas Vauquelin\AAno de descoberta: 1798"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:2;"]:hover::after { content: "O boro é um metalóide duro usado no vidro borossilicato\Ae como dopante em semicondutores.\A\ASímbolo: B\AMassa atômica: 10.811 u\ADensidade: 2.460 g/cm³\AFusão: 2076 °C\AEbulição: 3927 °C\ADescoberto por: Joseph Louis Gay-Lussac\AAno de descoberta: 1808"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:2;"]:hover::after { content: "O carbono é a base de toda a química orgânica e da vida,\Aexistindo como grafite, diamante e fulerenos.\A\ASímbolo: C\AMassa atômica: 12.011 u\ADensidade: 2.267 g/cm³\AFusão: 3550 °C\AEbulição: 4827 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:2;"]:hover::after { content: "O azoto constitui 78% da atmosfera terrestre\Ae é essencial para proteínas e o DNA.\A\ASímbolo: N\AMassa atômica: 14.007 u\ADensidade: 0.808 g/cm³\AFusão: -210.00 °C\AEbulição: -195.79 °C\ADescoberto por: Daniel Rutherford\AAno de descoberta: 1772"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:2;"]:hover::after { content: "O oxigénio é essencial para a vida e a combustão,\Aconstituindo 21% da atmosfera terrestre.\A\ASímbolo: O\AMassa atômica: 15.999 u\ADensidade: 1.141 g/cm³\AFusão: -218.79 °C\AEbulição: -182.96 °C\ADescoberto por: Carl Wilhelm Scheele\AAno de descoberta: 1771"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:2;"]:hover::after { content: "O flúor é o elemento mais eletronegativo e reativo de todos,\Acapaz de atacar o próprio vidro.\A\ASímbolo: F\AMassa atômica: 18.998 u\ADensidade: 1.553 g/cm³\AFusão: -219.67 °C\AEbulição: -188.11 °C\ADescoberto por: Henri Moissan\AAno de descoberta: 1886"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:2;"]:hover::after { content: "O néon produz a característica luz laranja-vermelha\Ados letreiros luminosos ao ser excitado eletricamente.\A\ASímbolo: Ne\AMassa atômica: 20.180 u\ADensidade: 1.207 g/cm³\AFusão: -248.59 °C\AEbulição: -246.08 °C\ADescoberto por: William Ramsay, Morris Travers\AAno de descoberta: 1898"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 3 */
+[style*="grid-column:1;grid-row:3;"]:hover::after { content: "O sódio reage violentamente com a água\Ae é essencial para o funcionamento dos nervos.\A\ASímbolo: Na\AMassa atômica: 22.990 u\ADensidade: 0.968 g/cm³\AFusão: 97.79 °C\AEbulição: 882.94 °C\ADescoberto por: Humphry Davy\AAno de descoberta: 1807"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:3;"]:hover::after { content: "Os maiores produtores de magnésio incluíam\Aa China, a Rússia e a Turquia.\A\ASímbolo: Mg\AMassa atômica: 24.305 u\ADensidade: 1.584 g/cm³\AFusão: 650 °C\AEbulição: 1091 °C\ADescoberto por: Humphry Davy, Joseph Black\AAno de descoberta: 1755"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:3;"]:hover::after { content: "O alumínio é o metal mais abundante na crosta terrestre\Ae o terceiro elemento mais comum na Terra.\A\ASímbolo: Al\AMassa atômica: 26.982 u\ADensidade: 2.375 g/cm³\AFusão: 660.32 °C\AEbulição: 2519 °C\ADescoberto por: Hans Christian Ørsted\AAno de descoberta: 1825"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:3;"]:hover::after { content: "O silício é o segundo elemento mais abundante na crosta terrestre\Ae a base da eletrónica moderna.\A\ASímbolo: Si\AMassa atômica: 28.086 u\ADensidade: 2.570 g/cm³\AFusão: 1414 °C\AEbulição: 3265 °C\ADescoberto por: Jöns Jacob Berzelius\AAno de descoberta: 1824"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:3;"]:hover::after { content: "O fósforo é essencial para o DNA, os ossos\Ae o metabolismo energético de todos os seres vivos.\A\ASímbolo: P\AMassa atômica: 30.974 u\ADensidade: 1.820 g/cm³\AFusão: 44.15 °C\AEbulição: 280.5 °C\ADescoberto por: Hennig Brand\AAno de descoberta: 1669"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:3;"]:hover::after { content: "O enxofre é um sólido amarelo cristalino usado desde\Aa Antiguidade na produção de ácido sulfúrico.\A\ASímbolo: S\AMassa atômica: 32.065 u\ADensidade: 1.819 g/cm³\AFusão: 115.21 °C\AEbulição: 444.72 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:3;"]:hover::after { content: "O cloro é um gás amarelo-esverdeado tóxico,\Aamplamamente usado no tratamento da água potável.\A\ASímbolo: Cl\AMassa atômica: 35.453 u\ADensidade: 1.563 g/cm³\AFusão: -101.5 °C\AEbulição: -34.04 °C\ADescoberto por: Carl Wilhelm Scheele\AAno de descoberta: 1774"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:3;"]:hover::after { content: "O árgon é o terceiro gás mais abundante na atmosfera,\Ausado na soldadura para evitar oxidação.\A\ASímbolo: Ar\AMassa atômica: 39.948 u\ADensidade: 1.395 g/cm³\AFusão: -189.35 °C\AEbulição: -185.85 °C\ADescoberto por: Lord Rayleigh, William Ramsay\AAno de descoberta: 1894"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 4 */
+[style*="grid-column:1;grid-row:4;"]:hover::after { content: "O potássio é essencial para as células e nervos,\Ae o seu cloreto é substituto do sal de cozinha.\A\ASímbolo: K\AMassa atômica: 39.098 u\ADensidade: 0.862 g/cm³\AFusão: 63.38 °C\AEbulição: 759 °C\ADescoberto por: Humphry Davy\AAno de descoberta: 1807"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:4;"]:hover::after { content: "O cálcio é o quinto elemento mais abundante na crosta terrestre\Ae é essencial para os ossos e dentes.\A\ASímbolo: Ca\AMassa atômica: 40.078 u\ADensidade: 1.378 g/cm³\AFusão: 842 °C\AEbulição: 1484 °C\ADescoberto por: Humphry Davy\AAno de descoberta: 1808"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:3;grid-row:4;"]:hover::after { content: "O escândio é um metal raro que forma ligas leves\Ae resistentes com o alumínio para a aeronáutica.\A\ASímbolo: Sc\AMassa atômica: 44.956 u\ADensidade: 2.985 g/cm³\AFusão: 1541 °C\AEbulição: 2836 °C\ADescoberto por: Lars Fredrik Nilson\AAno de descoberta: 1879"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:4;grid-row:4;"]:hover::after { content: "O titânio combina leveza e resistência excecional,\Sendo usado em aviação, medicina e desporto.\A\ASímbolo: Ti\AMassa atômica: 47.867 u\ADensidade: 4.110 g/cm³\AFusão: 1668 °C\AEbulição: 3287 °C\ADescoberto por: William Gregor\AAno de descoberta: 1791"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:4;"]:hover::after { content: "O vanádio melhora a resistência do aço\Ae é encontrado em quantidades no petróleo.\A\ASímbolo: V\AMassa atômica: 50.942 u\ADensidade: 6.000 g/cm³\AFusão: 1910 °C\AEbulição: 3407 °C\ADescoberto por: Andrés Manuel del Río\AAno de descoberta: 1801"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:4;"]:hover::after { content: "O cromo dá ao aço inoxidável a sua resistência\Aà corrosão e o seu brilho característico.\A\ASímbolo: Cr\AMassa atômica: 51.996 u\ADensidade: 7.140 g/cm³\AFusão: 1907 °C\AEbulição: 2671 °C\ADescoberto por: Louis Nicolas Vauquelin\AAno de descoberta: 1797"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:4;"]:hover::after { content: "O manganês é essencial na produção de aço\Ae de baterias alcalinas de zinco-manganês.\A\ASímbolo: Mn\AMassa atômica: 54.938 u\ADensidade: 7.210 g/cm³\AFusão: 1246 °C\AEbulição: 2061 °C\ADescoberto por: Johan Gottlieb Gahn\AAno de descoberta: 1774"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:4;"]:hover::after { content: "O ferro é o metal mais usado pelo Homem\Ae o núcleo da Terra é composto maioritariamente por ferro.\A\ASímbolo: Fe\AMassa atômica: 55.845 u\ADensidade: 7.874 g/cm³\AFusão: 1538 °C\AEbulição: 2861 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:4;"]:hover::after { content: "O cobalto dá a cor azul intensa ao vidro e à cerâmica\Ae é usado em baterias de iões de lítio.\A\ASímbolo: Co\AMassa atômica: 58.933 u\ADensidade: 8.900 g/cm³\AFusão: 1495 °C\AEbulição: 2927 °C\ADescoberto por: Georg Brandt\AAno de descoberta: 1735"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:4;"]:hover::after { content: "O níquel está presente nas moedas e é usado\Ano aço inoxidável e em catalisadores industriais.\A\ASímbolo: Ni\AMassa atômica: 58.693 u\ADensidade: 8.908 g/cm³\AFusão: 1455 °C\AEbulição: 2913 °C\ADescoberto por: Axel Fredrik Cronstedt\AAno de descoberta: 1751"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:4;"]:hover::after { content: "O cobre é o melhor condutor elétrico entre os metais\Anão preciosos e foi dos primeiros a ser usado pelo Homem.\A\ASímbolo: Cu\AMassa atômica: 63.546 u\ADensidade: 8.960 g/cm³\AFusão: 1084.62 °C\AEbulição: 2562 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:4;"]:hover::after { content: "O zinco é usado para galvanizar o aço e é o quarto\Ametal mais utilizado no mundo.\A\ASímbolo: Zn\AMassa atômica: 65.38 u\ADensidade: 7.133 g/cm³\AFusão: 419.53 °C\AEbulição: 907 °C\ADescoberto por: Andreas Sigismund Marggraf\AAno de descoberta: 1746"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:4;"]:hover::after { content: "O gálio tem ponto de fusão de 29.76 °C,\Aderretendo literalmente na palma da mão.\A\ASímbolo: Ga\AMassa atômica: 69.723 u\ADensidade: 6.095 g/cm³\AFusão: 29.76 °C\AEbulição: 2204 °C\ADescoberto por: Paul Emile Lecoq de Boisbaudran\AAno de descoberta: 1875"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:4;"]:hover::after { content: "O germânio foi previsto por Mendeleev antes de ser descoberto\Ae é base de fibras óticas e semicondutores.\A\ASímbolo: Ge\AMassa atômica: 72.630 u\ADensidade: 5.323 g/cm³\AFusão: 938.25 °C\AEbulição: 2833 °C\ADescoberto por: Clemens Winkler\AAno de descoberta: 1886"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:4;"]:hover::after { content: "O arsénio é um veneno famoso desde a Antiguidade,\Atambém usado em pesticidas e semicondutores.\A\ASímbolo: As\AMassa atômica: 74.922 u\ADensidade: 5.727 g/cm³\AFusão: 816 °C (sublima)\AEbulição: 614 °C\ADescoberto por: Albertus Magnus\AAno de descoberta: 1250"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:4;"]:hover::after { content: "O selénio é essencial para a saúde humana em pequenas\Aquantidades e é usado em células solares.\A\ASímbolo: Se\AMassa atômica: 78.971 u\ADensidade: 4.810 g/cm³\AFusão: 220.8 °C\AEbulição: 685 °C\ADescoberto por: Jöns Jacob Berzelius\AAno de descoberta: 1817"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:4;"]:hover::after { content: "O bromo é um dos dois únicos elementos líquidos\Aà temperatura ambiente, com odor forte e tóxico.\A\ASímbolo: Br\AMassa atômica: 79.904 u\ADensidade: 3.102 g/cm³\AFusão: -7.20 °C\AEbulição: 58.8 °C\ADescoberto por: Antoine Jérôme Balard\AAno de descoberta: 1826"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:4;"]:hover::after { content: "O crípton é um gás nobre usado em lâmpadas\Ade flash fotográfico de alta velocidade.\A\ASímbolo: Kr\AMassa atômica: 83.798 u\ADensidade: 2.413 g/cm³\AFusão: -157.36 °C\AEbulição: -153.22 °C\ADescoberto por: William Ramsay, Morris Travers\AAno de descoberta: 1898"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 5 */
+[style*="grid-column:1;grid-row:5;"]:hover::after { content: "O rubídio inflama-se espontaneamente ao ar\Ae é usado em relógios atómicos e células fotoelétricas.\A\ASímbolo: Rb\AMassa atômica: 85.468 u\ADensidade: 1.532 g/cm³\AFusão: 39.31 °C\AEbulição: 688 °C\ADescoberto por: Robert Bunsen, Gustav Kirchhoff\AAno de descoberta: 1861"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:5;"]:hover::after { content: "O estrôncio produz chamas vermelhas brilhantes\Anos fogos de artifício e é semelhante ao cálcio.\A\ASímbolo: Sr\AMassa atômica: 87.62 u\ADensidade: 2.630 g/cm³\AFusão: 777 °C\AEbulição: 1382 °C\ADescoberto por: Adair Crawford\AAno de descoberta: 1787"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:3;grid-row:5;"]:hover::after { content: "O ítrio é usado em supercondutores de alta temperatura\Ae em fósforos de ecrãs LED brancos.\A\ASímbolo: Y\AMassa atômica: 88.906 u\ADensidade: 4.472 g/cm³\AFusão: 1522 °C\AEbulição: 3345 °C\ADescoberto por: Johan Gadolin\AAno de descoberta: 1794"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:4;grid-row:5;"]:hover::after { content: "O zircônio é resistente à corrosão e é usado\Acomo revestimento de varetas de combustível nuclear.\A\ASímbolo: Zr\AMassa atômica: 91.224 u\ADensidade: 6.511 g/cm³\AFusão: 1854 °C\AEbulição: 4409 °C\ADescoberto por: Martin Heinrich Klaproth\AAno de descoberta: 1789"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:5;"]:hover::after { content: "O nióbio torna o aço mais resistente e é usado\Aem supercondutores para aceleradores de partículas.\A\ASímbolo: Nb\AMassa atômica: 92.906 u\ADensidade: 8.570 g/cm³\AFusão: 2477 °C\AEbulição: 4744 °C\ADescoberto por: Charles Hatchett\AAno de descoberta: 1801"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:5;"]:hover::after { content: "O molibdênio tem um dos pontos de fusão mais altos\Ae é essencial em diversas enzimas biológicas.\A\ASímbolo: Mo\AMassa atômica: 95.95 u\ADensidade: 10.280 g/cm³\AFusão: 2623 °C\AEbulição: 4639 °C\ADescoberto por: Carl Wilhelm Scheele\AAno de descoberta: 1778"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:5;"]:hover::after { content: "O tecnécio foi o primeiro elemento sintético criado pelo\AHomem, em 1937, por bombardeamento de molibdênio.\A\ASímbolo: Tc\AMassa atômica: [98] u\ADensidade: 11.500 g/cm³\AFusão: 2157 °C\AEbulição: 4265 °C\ADescoberto por: Carlo Perrier, Emilio Segrè\AAno de descoberta: 1937"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:5;"]:hover::after { content: "O ruténio é um dos metais de platina mais raros\Ae é usado como catalisador em células de combustível.\A\ASímbolo: Ru\AMassa atômica: 101.07 u\ADensidade: 12.450 g/cm³\AFusão: 2334 °C\AEbulição: 4150 °C\ADescoberto por: Karl Ernst Claus\AAno de descoberta: 1844"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:5;"]:hover::after { content: "O ródio é um dos metais mais raros e caros do mundo,\Aessencial nos catalisadores de automóveis.\A\ASímbolo: Rh\AMassa atômica: 102.906 u\ADensidade: 12.410 g/cm³\AFusão: 1964 °C\AEbulição: 3695 °C\ADescoberto por: William Hyde Wollaston\AAno de descoberta: 1804"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:5;"]:hover::after { content: "O paládio pode absorver até 900 vezes o seu volume\Aem hidrogênio, sendo usado na sua purificação.\A\ASímbolo: Pd\AMassa atômica: 106.42 u\ADensidade: 12.023 g/cm³\AFusão: 1554.9 °C\AEbulição: 2963 °C\ADescoberto por: William Hyde Wollaston\AAno de descoberta: 1803"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:5;"]:hover::after { content: "A prata é o melhor condutor elétrico de todos os elementos\Ae tem propriedades antimicrobianas naturais.\A\ASímbolo: Ag\AMassa atômica: 107.868 u\ADensidade: 10.501 g/cm³\AFusão: 961.78 °C\AEbulição: 2162 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:5;"]:hover::after { content: "O cádmio é tóxico e cancerígeno, mas essencial\Anas baterias de níquel-cádmio e como pigmento.\A\ASímbolo: Cd\AMassa atômica: 112.414 u\ADensidade: 8.650 g/cm³\AFusão: 321.07 °C\AEbulição: 767 °C\ADescoberto por: Friedrich Strohmeyer\AAno de descoberta: 1817"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:5;"]:hover::after { content: "O índio é vital na produção de ecrãs touch\Acomo óxido de índio e estanho (ITO) transparente.\A\ASímbolo: In\AMassa atômica: 114.818 u\ADensidade: 7.310 g/cm³\AFusão: 156.60 °C\AEbulição: 2072 °C\ADescoberto por: Ferdinand Reich, Hieronymus Richter\AAno de descoberta: 1863"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:5;"]:hover::after { content: "O estanho é usado desde 3000 a.C. em ligas com o cobre\A(bronze) e como revestimento anticorrosão de latas.\A\ASímbolo: Sn\AMassa atômica: 118.710 u\ADensidade: 7.265 g/cm³\AFusão: 231.93 °C\AEbulição: 2602 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:5;"]:hover::after { content: "O antimônio foi usado como cosmético pelo Egito Antigo\Ae hoje é usado como retardante de chama.\A\ASímbolo: Sb\AMassa atômica: 121.760 u\ADensidade: 6.697 g/cm³\AFusão: 630.63 °C\AEbulição: 1587 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:5;"]:hover::after { content: "O telúrio é um dos elementos mais raros na crosta terrestre\Ae é usado em discos DVD regraváveis.\A\ASímbolo: Te\AMassa atômica: 127.60 u\ADensidade: 6.240 g/cm³\AFusão: 449.51 °C\AEbulição: 988 °C\ADescoberto por: Franz-Joseph Müller von Reichenstein\AAno de descoberta: 1782"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:5;"]:hover::after { content: "O iodo é essencial para a função da tiróide\Ae é o elemento mais pesado necessário para a vida.\A\ASímbolo: I\AMassa atômica: 126.904 u\ADensidade: 4.933 g/cm³\AFusão: 113.7 °C\AEbulição: 184.3 °C\ADescoberto por: Bernard Courtois\AAno de descoberta: 1811"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:5;"]:hover::after { content: "O xénon é um gás nobre usado em lâmpadas de faróis\Ade automóveis e em motores iónicos de satélites.\A\ASímbolo: Xe\AMassa atômica: 131.293 u\ADensidade: 3.057 g/cm³\AFusão: -111.75 °C\AEbulição: -108.09 °C\ADescoberto por: William Ramsay, Morris Travers\AAno de descoberta: 1898"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 6 */
+[style*="grid-column:1;grid-row:6;"]:hover::after { content: "O césio é um dos metais alcalinos mais reativos\Ae define o segundo do SI através dos relógios atómicos.\A\ASímbolo: Cs\AMassa atômica: 132.905 u\ADensidade: 1.873 g/cm³\AFusão: 28.44 °C\AEbulição: 671 °C\ADescoberto por: Robert Bunsen, Gustav Kirchhoff\AAno de descoberta: 1860"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:6;"]:hover::after { content: "O bário é usado em radiografias do sistema digestivo\Ae produz chamas verdes nos fogos de artifício.\A\ASímbolo: Ba\AMassa atômica: 137.327 u\ADensidade: 3.594 g/cm³\AFusão: 727 °C\AEbulição: 1845 °C\ADescoberto por: Humphry Davy\AAno de descoberta: 1808"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:3;grid-row:6;"]:hover::after { content: "O lantânio dá nome a toda a série dos lantanídeos\Ae é usado em lentes óticas de alta qualidade.\A\ASímbolo: La\AMassa atômica: 138.905 u\ADensidade: 6.145 g/cm³\AFusão: 920 °C\AEbulição: 3464 °C\ADescoberto por: Carl Gustaf Mosander\AAno de descoberta: 1839"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:4;grid-row:6;"]:hover::after { content: "O háfnio é extremamente resistente à corrosão\Ae é usado em reatores nucleares e microprocesadores.\A\ASímbolo: Hf\AMassa atômica: 178.49 u\ADensidade: 13.310 g/cm³\AFusão: 2233 °C\AEbulição: 4603 °C\ADescoberto por: Dirk Coster, George de Hevesy\AAno de descoberta: 1922"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:6;"]:hover::after { content: "O tântalo é biocompatível e é usado em implantes médicos,\Acondensadores e componentes de reatores.\A\ASímbolo: Ta\AMassa atômica: 180.948 u\ADensidade: 16.650 g/cm³\AFusão: 3017 °C\AEbulição: 5458 °C\ADescoberto por: Anders Gustaf Ekeberg\AAno de descoberta: 1802"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:6;"]:hover::after { content: "O tungsténio tem o ponto de fusão mais elevado\Ade todos os elementos e é usado em filamentos de lâmpadas.\A\ASímbolo: W\AMassa atômica: 183.84 u\ADensidade: 19.250 g/cm³\AFusão: 3422 °C\AEbulição: 5555 °C\ADescoberto por: Juan José Elhuyar, Fausto Elhuyar\AAno de descoberta: 1783"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:6;"]:hover::after { content: "O rénio tem o segundo ponto de ebulição mais alto\Ade todos os elementos e é usado em turbinas de avião.\A\ASímbolo: Re\AMassa atômica: 186.207 u\ADensidade: 21.020 g/cm³\AFusão: 3186 °C\AEbulição: 5596 °C\ADescoberto por: Ida Noddack, Walter Noddack\AAno de descoberta: 1925"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:6;"]:hover::after { content: "O ósmio é o elemento mais denso de todos\Aos que existem naturalmente e é extremamente duro.\A\ASímbolo: Os\AMassa atômica: 190.23 u\ADensidade: 22.590 g/cm³\AFusão: 3033 °C\AEbulição: 5012 °C\ADescoberto por: Smithson Tennant\AAno de descoberta: 1803"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:6;"]:hover::after { content: "O irídio é o segundo elemento mais denso e o metal\Amais resistente à corrosão a altas temperaturas.\A\ASímbolo: Ir\AMassa atômica: 192.217 u\ADensidade: 22.560 g/cm³\AFusão: 2446 °C\AEbulição: 4428 °C\ADescoberto por: Smithson Tennant\AAno de descoberta: 1803"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:6;"]:hover::after { content: "A platina é um metal precioso extremamente resistente\Aà corrosão e um excelente catalisador industrial.\A\ASímbolo: Pt\AMassa atômica: 195.084 u\ADensidade: 21.450 g/cm³\AFusão: 1768.3 °C\AEbulição: 3825 °C\ADescoberto por: Antonio de Ulloa\AAno de descoberta: 1735"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:6;"]:hover::after { content: "O ouro é usado como moeda há milénios\Ae não oxida nem corrói em condições normais.\A\ASímbolo: Au\AMassa atômica: 196.967 u\ADensidade: 19.300 g/cm³\AFusão: 1064.18 °C\AEbulição: 2856 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:6;"]:hover::after { content: "O mercúrio é o único metal líquido à temperatura ambiente\Ae foi usado em termómetros e interruptores.\A\ASímbolo: Hg\AMassa atômica: 200.592 u\ADensidade: 14.184 g/cm³\AFusão: -38.83 °C\AEbulição: 356.73 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:6;"]:hover::after { content: "O tálio é extremamente tóxico e foi usado historicamente\Acomo raticida e em casos de envenenamento.\A\ASímbolo: Tl\AMassa atômica: 204.383 u\ADensidade: 11.850 g/cm³\AFusão: 304 °C\AEbulição: 1473 °C\ADescoberto por: William Crookes\AAno de descoberta: 1861"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:6;"]:hover::after { content: "O chumbo é um metal pesado tóxico, usado em baterias\Ade chumbo-ácido e em proteção contra radiação.\A\ASímbolo: Pb\AMassa atômica: 207.2 u\ADensidade: 11.340 g/cm³\AFusão: 327.46 °C\AEbulição: 1749 °C\ADescoberto por: Conhecido desde a Antiguidade\AAno de descoberta: Pré-história"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:6;"]:hover::after { content: "O bismuto expande-se ao solidificar, ao contrário\Ada maioria dos metais, e é usado em medicamentos.\A\ASímbolo: Bi\AMassa atômica: 208.980 u\ADensidade: 10.050 g/cm³\AFusão: 271.47 °C\AEbulição: 1564 °C\ADescoberto por: Claude François Geoffroy\AAno de descoberta: 1753"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:6;"]:hover::after { content: "O polônio é altamente radioativo e foi descoberto\Apor Marie Curie em 1898, em homenagem à Polónia.\A\ASímbolo: Po\AMassa atômica: [209] u\ADensidade: 9.196 g/cm³\AFusão: 254 °C\AEbulição: 962 °C\ADescoberto por: Marie Curie, Pierre Curie\AAno de descoberta: 1898"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:6;"]:hover::after { content: "O ástato é o elemento natural mais raro na crosta terrestre,\Acom apenas cerca de 28 gramas presentes na Terra.\A\ASímbolo: At\AMassa atômica: [210] u\ADensidade: ~7 g/cm³\AFusão: 302 °C\AEbulição: 337 °C\ADescoberto por: Dale R. Corson, Kenneth Ross MacKenzie\AAno de descoberta: 1940"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:6;"]:hover::after { content: "O radônio é um gás radioativo produzido pela desintegração\Ado rádio e pode acumular-se perigosamente em edifícios.\A\ASímbolo: Rn\AMassa atômica: [222] u\ADensidade: 4.400 g/cm³\AFusão: -71 °C\AEbulição: -61.85 °C\ADescoberto por: Friedrich Ernst Dorn\AAno de descoberta: 1900"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Período 7 */
+[style*="grid-column:1;grid-row:7;"]:hover::after { content: "O frâncio é o elemento natural mais instável e raro,\Acom uma semi-vida de apenas 22 minutos.\A\ASímbolo: Fr\AMassa atômica: [223] u\ADensidade: ~1.87 g/cm³\AFusão: 27 °C\AEbulição: 677 °C\ADescoberto por: Marguerite Perey\AAno de descoberta: 1939"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:2;grid-row:7;"]:hover::after { content: "O rádio é altamente radioativo e brilha no escuro;\Afoi descoberto por Marie e Pierre Curie em 1898.\A\ASímbolo: Ra\AMassa atômica: [226] u\ADensidade: 5.000 g/cm³\AFusão: 700 °C\AEbulição: 1737 °C\ADescoberto por: Marie Curie, Pierre Curie\AAno de descoberta: 1898"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:3;grid-row:7;"]:hover::after { content: "O actínio dá nome à série dos actinídeos e é intensamente\Aradioativo, emitindo luz azul no escuro.\A\ASímbolo: Ac\AMassa atômica: [227] u\ADensidade: 10.070 g/cm³\AFusão: 1050 °C\AEbulição: 3200 °C\ADescoberto por: Friedrich Oskar Giesel\AAno de descoberta: 1902"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:4;grid-row:7;"]:hover::after { content: "O rutherfórdio é um elemento sintético de vida muito curta,\Acom meia-vida de apenas 65 segundos.\A\ASímbolo: Rf\AMassa atômica: [267] u\ADensidade: ~23 g/cm³\AFusão: ~2100 °C\AEbulição: ~5500 °C\ASintetizado por: JINR, Dubna\AAno: 1964"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:7;"]:hover::after { content: "O dúbnio é um elemento sintético transactinídeo\Aextremamente instável, com meia-vida de 28 horas.\A\ASímbolo: Db\AMassa atômica: [268] u\ADensidade: ~29 g/cm³\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 1967"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:7;"]:hover::after { content: "O seabórgio foi nomeado em homenagem a Glenn T. Seaborg,\Agalardoado com o Nobel de Química em 1951.\A\ASímbolo: Sg\AMassa atômica: [269] u\ADensidade: ~35 g/cm³\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: LBNL, Berkeley\AAno: 1974"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:7;"]:hover::after { content: "O bóhrio foi nomeado em homenagem ao físico Niels Bohr\Ae tem uma meia-vida de apenas 17 segundos.\A\ASímbolo: Bh\AMassa atômica: [270] u\ADensidade: ~37 g/cm³\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1981"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:7;"]:hover::after { content: "O hássio foi nomeado em homenagem ao estado alemão de Hessen\Ae tem uma meia-vida de apenas 9 segundos.\A\ASímbolo: Hs\AMassa atômica: [277] u\ADensidade: ~40 g/cm³\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1984"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:7;"]:hover::after { content: "O meitnério foi nomeado em homenagem a Lise Meitner,\Afísica que contribuiu para a descoberta da fissão nuclear.\A\ASímbolo: Mt\AMassa atômica: [278] u\ADensidade: ~35 g/cm³\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1982"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:7;"]:hover::after { content: "O darmstádtio tem uma meia-vida de apenas 10 microssegundos\Ae praticamente só pode ser detetado indiretamente.\A\ASímbolo: Ds\AMassa atômica: [281] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1994"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:7;"]:hover::after { content: "O roentgênio foi nomeado em homenagem a Wilhelm Röntgen,\Adescobridorde dos raios X.\A\ASímbolo: Rg\AMassa atômica: [282] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1994"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:7;"]:hover::after { content: "O copernício foi nomeado em homenagem a Nicolau Copérnico\Ae é previsto ser um gás à temperatura ambiente.\A\ASímbolo: Cn\AMassa atômica: [285] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: GSI, Darmstadt\AAno: 1996"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:7;"]:hover::after { content: "O nihônio foi sintetizado no Japão, sendo o primeiro\Aelemento descoberto num país asiático.\A\ASímbolo: Nh\AMassa atômica: [286] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: RIKEN, Japão\AAno: 2004"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:7;"]:hover::after { content: "O fleróvio foi nomeado em homenagem ao Laboratório Flerov\Ade Reações Nucleares em Dubna, Rússia.\A\ASímbolo: Fl\AMassa atômica: [289] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 1999"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:7;"]:hover::after { content: "O moscóvio foi nomeado em homenagem à região de Moscovo,\Aonde fica o laboratório que o criou.\A\ASímbolo: Mc\AMassa atômica: [290] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 2003"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:7;"]:hover::after { content: "O livermório foi nomeado em homenagem ao Laboratório\ANacional Lawrence Livermore, nos EUA.\A\ASímbolo: Lv\AMassa atômica: [293] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 2000"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:7;"]:hover::after { content: "O tenessino foi nomeado em homenagem ao estado do Tennessee,\Aonde se encontram importantes laboratórios de física nuclear.\A\ASímbolo: Ts\AMassa atômica: [294] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 2010"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:18;grid-row:7;"]:hover::after { content: "O oganessão foi nomeado em homenagem ao físico Yuri Oganessian\Ae pode ser um sólido à temperatura ambiente.\A\ASímbolo: Og\AMassa atômica: [294] u\ADensidade: Desconhecida\AFusão: Desconhecido\AEbulição: Desconhecido\ASintetizado por: JINR, Dubna\AAno: 2002"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Lantanídeos */
+[style*="grid-column:4;grid-row:9;"]:hover::after { content: "O cério é o lantanídeo mais abundante,\Ao 25.º elemento mais abundante na crosta terrestre.\A\ASímbolo: Ce\AMassa atômica: 140.116 u\ADensidade: 6.770 g/cm³\AFusão: 798 °C\AEbulição: 3443 °C\ADescoberto por: Jöns Jacob Berzelius, Wilhelm Hisinger\AAno de descoberta: 1803"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:9;"]:hover::after { content: "O praseodímio é usado em imanes de neodímio-ferro-boro\Ae produz um ião de cor verde em soluções aquosas.\A\ASímbolo: Pr\AMassa atômica: 140.908 u\ADensidade: 6.773 g/cm³\AFusão: 931 °C\AEbulição: 3520 °C\ADescoberto por: Carl Auer von Welsbach\AAno de descoberta: 1885"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:9;"]:hover::after { content: "O neodímio é o componente principal dos imanes permanentes\Amais potentes do mundo, usados em discos rígidos e motores.\A\ASímbolo: Nd\AMassa atômica: 144.242 u\ADensidade: 7.007 g/cm³\AFusão: 1021 °C\AEbulição: 3074 °C\ADescoberto por: Carl Auer von Welsbach\AAno de descoberta: 1885"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:9;"]:hover::after { content: "O promécio é o único lantanídeo sem isótopos estáveis\Ae é produzido artificialmente em reatores nucleares.\A\ASímbolo: Pm\AMassa atômica: [145] u\ADensidade: 7.264 g/cm³\AFusão: 1042 °C\AEbulição: 3000 °C\ADescoberto por: Jacob A. Marinsky, Lawrence E. Glendenin\AAno de descoberta: 1945"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:9;"]:hover::after { content: "O samário é usado em imanes de cobalto-samário,\Aos primeiros imanes de terras raras comercialmente viáveis.\A\ASímbolo: Sm\AMassa atômica: 150.36 u\ADensidade: 7.520 g/cm³\AFusão: 1072 °C\AEbulição: 1794 °C\ADescoberto por: Paul Emile Lecoq de Boisbaudran\AAno de descoberta: 1879"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:9;"]:hover::after { content: "O európio é responsável pela fluorescência vermelha e azul\Ados ecrãs de televisão e monitores.\A\ASímbolo: Eu\AMassa atômica: 151.964 u\ADensidade: 5.244 g/cm³\AFusão: 822 °C\AEbulição: 1529 °C\ADescoberto por: Eugène-Anatole Demarçay\AAno de descoberta: 1901"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:9;"]:hover::after { content: "O gadolínio é usado como agente de contraste\Aem ressonâncias magnéticas (RM) para diagnóstico médico.\A\ASímbolo: Gd\AMassa atômica: 157.25 u\ADensidade: 7.901 g/cm³\AFusão: 1313 °C\AEbulição: 3273 °C\ADescoberto por: Jean Charles Galissard de Marignac\AAno de descoberta: 1880"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:9;"]:hover::after { content: "O térbio é usado em materiais magnetostritivos\Ae em fósforos verdes de alta eficiência para ecrãs.\A\ASímbolo: Tb\AMassa atômica: 158.925 u\ADensidade: 8.219 g/cm³\AFusão: 1356 °C\AEbulição: 3230 °C\ADescoberto por: Carl Gustaf Mosander\AAno de descoberta: 1843"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:9;"]:hover::after { content: "O disprósio é crítico para imanes em turbinas eólicas\Ae motores de veículos elétricos modernos.\A\ASímbolo: Dy\AMassa atômica: 162.500 u\ADensidade: 8.551 g/cm³\AFusão: 1412 °C\AEbulição: 2567 °C\ADescoberto por: Paul Emile Lecoq de Boisbaudran\AAno de descoberta: 1886"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:9;"]:hover::after { content: "O hólmio tem o maior momento magnético de todos os elementos\Ae é usado em imanes supercondutores.\A\ASímbolo: Ho\AMassa atômica: 164.930 u\ADensidade: 8.795 g/cm³\AFusão: 1474 °C\AEbulição: 2700 °C\ADescoberto por: Per Teodor Cleve\AAno de descoberta: 1878"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:9;"]:hover::after { content: "O érbio amplifica sinais em fibras óticas\Ae é usado em lasers médicos para tratamentos cutâneos.\A\ASímbolo: Er\AMassa atômica: 167.259 u\ADensidade: 9.066 g/cm³\AFusão: 1529 °C\AEbulição: 2868 °C\ADescoberto por: Carl Gustaf Mosander\AAno de descoberta: 1843"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:9;"]:hover::after { content: "O túlio é o lantanídeo mais raro e caro,\Ausado em lasers cirúrgicos de alta potência.\A\ASímbolo: Tm\AMassa atômica: 168.934 u\ADensidade: 9.321 g/cm³\AFusão: 1545 °C\AEbulição: 1950 °C\ADescoberto por: Per Teodor Cleve\AAno de descoberta: 1879"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:9;"]:hover::after { content: "O itérbio é usado nos relógios atómicos de lattice ótica,\Aos mais precisos alguma vez construídos.\A\ASímbolo: Yb\AMassa atômica: 173.054 u\ADensidade: 6.965 g/cm³\AFusão: 824 °C\AEbulição: 1196 °C\ADescoberto por: Jean Charles Galissard de Marignac\AAno de descoberta: 1878"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:9;"]:hover::after { content: "O lutécio é o lantanídeo mais pesado e denso,\Ausado em tomógrafos PET na medicina nuclear.\A\ASímbolo: Lu\AMassa atômica: 174.967 u\ADensidade: 9.841 g/cm³\AFusão: 1663 °C\AEbulição: 3402 °C\ADescoberto por: Georges Urbain\AAno de descoberta: 1907"; white-space:pre-line; min-width:380px; text-align:left; }
+/* Actinídeos */
+[style*="grid-column:4;grid-row:10;"]:hover::after { content: "O tório é o material radioativo mais abundante na Terra\Ae é potencial combustível nuclear do futuro.\A\ASímbolo: Th\AMassa atômica: 232.038 u\ADensidade: 11.720 g/cm³\AFusão: 1750 °C\AEbulição: 4788 °C\ADescoberto por: Jöns Jacob Berzelius\AAno de descoberta: 1829"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:5;grid-row:10;"]:hover::after { content: "O protactínio é um metal raro, radioativo e tóxico,\Aproduto da desintegração do urânio-235.\A\ASímbolo: Pa\AMassa atômica: 231.036 u\ADensidade: 15.370 g/cm³\AFusão: 1572 °C\AEbulição: 4000 °C\ADescoberto por: Kasimir Fajans, Otto Göhring\AAno de descoberta: 1913"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:6;grid-row:10;"]:hover::after { content: "O urânio é o combustível dos reatores nucleares\Ae o elemento natural mais pesado encontrado na Terra.\A\ASímbolo: U\AMassa atômica: 238.029 u\ADensidade: 19.050 g/cm³\AFusão: 1135 °C\AEbulição: 4131 °C\ADescoberto por: Martin Heinrich Klaproth\AAno de descoberta: 1789"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:7;grid-row:10;"]:hover::after { content: "O neptúnio foi o primeiro elemento transurânico sintetizado\Ae é produzido em reatores nucleares.\A\ASímbolo: Np\AMassa atômica: [237] u\ADensidade: 20.450 g/cm³\AFusão: 644 °C\AEbulição: 4000 °C\ADescoberto por: Edwin McMillan, Philip Abelson\AAno de descoberta: 1940"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:8;grid-row:10;"]:hover::after { content: "O plutônio é o elemento artificial mais produzido\Ae é o material fissionável usado em armas nucleares.\A\ASímbolo: Pu\AMassa atômica: [244] u\ADensidade: 19.816 g/cm³\AFusão: 640 °C\AEbulição: 3228 °C\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1940"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:9;grid-row:10;"]:hover::after { content: "O amerício é usado nos detetores de fumo ionizantes\Apresentes na maioria dos edifícios modernos.\A\ASímbolo: Am\AMassa atômica: [243] u\ADensidade: 13.670 g/cm³\AFusão: 1176 °C\AEbulição: 2011 °C\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1944"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:10;grid-row:10;"]:hover::after { content: "O cúrio foi nomeado em homenagem a Marie e Pierre Curie\Ae é usado como fonte de energia em sondas espaciais.\A\ASímbolo: Cm\AMassa atômica: [247] u\ADensidade: 13.510 g/cm³\AFusão: 1345 °C\AEbulição: ~3110 °C\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1944"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:11;grid-row:10;"]:hover::after { content: "O berquélio foi nomeado em homenagem a Berkeley, Califórnia,\Aonde foi sintetizado pela equipa de Seaborg.\A\ASímbolo: Bk\AMassa atômica: [247] u\ADensidade: 14.780 g/cm³\AFusão: 986 °C\AEbulição: ~2627 °C\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1949"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:12;grid-row:10;"]:hover::after { content: "O califórnio é um potente emissor de neutrões,\Ausado para iniciar reatores nucleares e em medicina.\A\ASímbolo: Cf\AMassa atômica: [251] u\ADensidade: 15.100 g/cm³\AFusão: 900 °C\AEbulição: ~1470 °C\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1950"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:13;grid-row:10;"]:hover::after { content: "O einstênio foi descoberto nos destroços da primeira bomba\Atermonuclear em 1952, nomeado em honra de Einstein.\A\ASímbolo: Es\AMassa atômica: [252] u\ADensidade: ~8.84 g/cm³\AFusão: 860 °C\AEbulição: ~996 °C\ADescoberto por: Albert Ghiorso\AAno de descoberta: 1952"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:14;grid-row:10;"]:hover::after { content: "O férmio foi descoberto nos destroços de testes nucleares\Ae nomeado em homenagem a Enrico Fermi.\A\ASímbolo: Fm\AMassa atômica: [257] u\ADensidade: Desconhecida\AFusão: 1527 °C\AEbulição: Desconhecido\ADescoberto por: Albert Ghiorso\AAno de descoberta: 1952"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:15;grid-row:10;"]:hover::after { content: "O mendelévio foi nomeado em homenagem a Dmitri Mendeleev,\Acriador da tabela periódica dos elementos.\A\ASímbolo: Md\AMassa atômica: [258] u\ADensidade: Desconhecida\AFusão: 827 °C\AEbulição: Desconhecido\ADescoberto por: Glenn T. Seaborg\AAno de descoberta: 1955"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:16;grid-row:10;"]:hover::after { content: "O nobélio foi nomeado em homenagem a Alfred Nobel\Ae foi alvo de controvérsia na sua reivindicação de descoberta.\A\ASímbolo: No\AMassa atômica: [259] u\ADensidade: Desconhecida\AFusão: 827 °C\AEbulição: Desconhecido\ADescoberto por: JINR, Dubna\AAno de descoberta: 1966"; white-space:pre-line; min-width:380px; text-align:left; }
+[style*="grid-column:17;grid-row:10;"]:hover::after { content: "O laurêncio foi nomeado em homenagem a Ernest Lawrence,\Ainventor do ciclotron, usado para sintetizá-lo.\A\ASímbolo: Lr\AMassa atômica: [266] u\ADensidade: Desconhecida\AFusão: 1627 °C\AEbulição: Desconhecido\ADescoberto por: Albert Ghiorso\AAno de descoberta: 1961"; white-space:pre-line; min-width:380px; text-align:left; }

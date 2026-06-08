@@ -13,395 +13,466 @@
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">Tabela <span>Periódica</span></a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="animacoes.html">Animações</a></li>
                 <li><a href="about.html">About us</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
+
+        <!-- Radio inputs para filtro CSS (devem preceder a tabela e a legenda) -->
+        <input type="radio" name="cat-filter" id="f-all"                    class="cat-radio" checked>
+        <input type="radio" name="cat-filter" id="f-alkali-metals"          class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-alkaline-earth-metals"  class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-transition-metals"      class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-post-transition-metals" class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-metalloids"             class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-reactive-nonmetals"     class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-noble-gases"            class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-lanthanides"            class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-actinides"              class="cat-radio">
+        <input type="radio" name="cat-filter" id="f-unknown-properties"     class="cat-radio">
+
         <div class="periodic-table-wrapper">
             <div class="periodic-table">
 
                 <!-- Linha 1 -->
-                <div class="cell" style="grid-column:1;grid-row:1;background:var(--cat-reactive-nonmetals)">
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:1;grid-row:1;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">1</span><span class="cell-symbol">H</span><span class="cell-name">Hidrogénio</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:1;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:1;background:var(--cat-noble-gases)">
                     <span class="cell-number">2</span><span class="cell-symbol">He</span><span class="cell-name">Hélio</span>
-                </div>
+                </label>
 
                 <!-- Linha 2 -->
-                <div class="cell" style="grid-column:1;grid-row:2;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:2;background:var(--cat-alkali-metals)">
                     <span class="cell-number">3</span><span class="cell-symbol">Li</span><span class="cell-name">Lítio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:2;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:2;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">4</span><span class="cell-symbol">Be</span><span class="cell-name">Berílio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:2;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:13;grid-row:2;background:var(--cat-metalloids)">
                     <span class="cell-number">5</span><span class="cell-symbol">B</span><span class="cell-name">Boro</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:2;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:14;grid-row:2;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">6</span><span class="cell-symbol">C</span><span class="cell-name">Carbono</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:2;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:15;grid-row:2;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">7</span><span class="cell-symbol">N</span><span class="cell-name">Azoto</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:2;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:16;grid-row:2;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">8</span><span class="cell-symbol">O</span><span class="cell-name">Oxigénio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:2;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:17;grid-row:2;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">9</span><span class="cell-symbol">F</span><span class="cell-name">Flúor</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:2;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:2;background:var(--cat-noble-gases)">
                     <span class="cell-number">10</span><span class="cell-symbol">Ne</span><span class="cell-name">Néon</span>
-                </div>
+                </label>
 
                 <!-- Linha 3 -->
-                <div class="cell" style="grid-column:1;grid-row:3;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:3;background:var(--cat-alkali-metals)">
                     <span class="cell-number">11</span><span class="cell-symbol">Na</span><span class="cell-name">Sódio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:3;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:3;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">12</span><span class="cell-symbol">Mg</span><span class="cell-name">Magnésio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:3;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:13;grid-row:3;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">13</span><span class="cell-symbol">Al</span><span class="cell-name">Alumínio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:3;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:14;grid-row:3;background:var(--cat-metalloids)">
                     <span class="cell-number">14</span><span class="cell-symbol">Si</span><span class="cell-name">Silício</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:3;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:15;grid-row:3;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">15</span><span class="cell-symbol">P</span><span class="cell-name">Fósforo</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:3;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:16;grid-row:3;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">16</span><span class="cell-symbol">S</span><span class="cell-name">Enxofre</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:3;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:17;grid-row:3;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">17</span><span class="cell-symbol">Cl</span><span class="cell-name">Cloro</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:3;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:3;background:var(--cat-noble-gases)">
                     <span class="cell-number">18</span><span class="cell-symbol">Ar</span><span class="cell-name">Árgon</span>
-                </div>
+                </label>
 
                 <!-- Linha 4 -->
-                <div class="cell" style="grid-column:1;grid-row:4;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:4;background:var(--cat-alkali-metals)">
                     <span class="cell-number">19</span><span class="cell-symbol">K</span><span class="cell-name">Potássio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:4;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:4;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">20</span><span class="cell-symbol">Ca</span><span class="cell-name">Cálcio</span>
-                </div>
-                <div class="cell" style="grid-column:3;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:3;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">21</span><span class="cell-symbol">Sc</span><span class="cell-name">Escândio</span>
-                </div>
-                <div class="cell" style="grid-column:4;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:4;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">22</span><span class="cell-symbol">Ti</span><span class="cell-name">Titânio</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:5;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">23</span><span class="cell-symbol">V</span><span class="cell-name">Vanádio</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:6;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">24</span><span class="cell-symbol">Cr</span><span class="cell-name">Crómio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:7;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">25</span><span class="cell-symbol">Mn</span><span class="cell-name">Manganês</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:8;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">26</span><span class="cell-symbol">Fe</span><span class="cell-name">Ferro</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:9;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">27</span><span class="cell-symbol">Co</span><span class="cell-name">Cobalto</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:10;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">28</span><span class="cell-symbol">Ni</span><span class="cell-name">Níquel</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:11;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">29</span><span class="cell-symbol">Cu</span><span class="cell-name">Cobre</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:4;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:12;grid-row:4;background:var(--cat-transition-metals)">
                     <span class="cell-number">30</span><span class="cell-symbol">Zn</span><span class="cell-name">Zinco</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:4;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:13;grid-row:4;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">31</span><span class="cell-symbol">Ga</span><span class="cell-name">Gálio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:4;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:14;grid-row:4;background:var(--cat-metalloids)">
                     <span class="cell-number">32</span><span class="cell-symbol">Ge</span><span class="cell-name">Germânio</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:4;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:15;grid-row:4;background:var(--cat-metalloids)">
                     <span class="cell-number">33</span><span class="cell-symbol">As</span><span class="cell-name">Arsénio</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:4;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:16;grid-row:4;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">34</span><span class="cell-symbol">Se</span><span class="cell-name">Selénio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:4;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:17;grid-row:4;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">35</span><span class="cell-symbol">Br</span><span class="cell-name">Bromo</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:4;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:4;background:var(--cat-noble-gases)">
                     <span class="cell-number">36</span><span class="cell-symbol">Kr</span><span class="cell-name">Crípton</span>
-                </div>
+                </label>
 
                 <!-- Linha 5 -->
-                <div class="cell" style="grid-column:1;grid-row:5;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:5;background:var(--cat-alkali-metals)">
                     <span class="cell-number">37</span><span class="cell-symbol">Rb</span><span class="cell-name">Rubídio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:5;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:5;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">38</span><span class="cell-symbol">Sr</span><span class="cell-name">Estrôncio</span>
-                </div>
-                <div class="cell" style="grid-column:3;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:3;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">39</span><span class="cell-symbol">Y</span><span class="cell-name">Ítrio</span>
-                </div>
-                <div class="cell" style="grid-column:4;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:4;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">40</span><span class="cell-symbol">Zr</span><span class="cell-name">Zircônio</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:5;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">41</span><span class="cell-symbol">Nb</span><span class="cell-name">Nióbio</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:6;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">42</span><span class="cell-symbol">Mo</span><span class="cell-name">Molibdênio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:7;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">43</span><span class="cell-symbol">Tc</span><span class="cell-name">Tecnécio</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:8;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">44</span><span class="cell-symbol">Ru</span><span class="cell-name">Rutênio</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:9;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">45</span><span class="cell-symbol">Rh</span><span class="cell-name">Ródio</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:10;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">46</span><span class="cell-symbol">Pd</span><span class="cell-name">Paládio</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:11;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">47</span><span class="cell-symbol">Ag</span><span class="cell-name">Prata</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:5;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:12;grid-row:5;background:var(--cat-transition-metals)">
                     <span class="cell-number">48</span><span class="cell-symbol">Cd</span><span class="cell-name">Cádmio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:5;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:13;grid-row:5;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">49</span><span class="cell-symbol">In</span><span class="cell-name">Índio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:5;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:14;grid-row:5;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">50</span><span class="cell-symbol">Sn</span><span class="cell-name">Estanho</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:5;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:15;grid-row:5;background:var(--cat-metalloids)">
                     <span class="cell-number">51</span><span class="cell-symbol">Sb</span><span class="cell-name">Antimônio</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:5;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:16;grid-row:5;background:var(--cat-metalloids)">
                     <span class="cell-number">52</span><span class="cell-symbol">Te</span><span class="cell-name">Telúrio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:5;background:var(--cat-reactive-nonmetals)">
+                </label>
+                <label class="cell" for="f-reactive-nonmetals" style="grid-column:17;grid-row:5;background:var(--cat-reactive-nonmetals)">
                     <span class="cell-number">53</span><span class="cell-symbol">I</span><span class="cell-name">Iodo</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:5;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:5;background:var(--cat-noble-gases)">
                     <span class="cell-number">54</span><span class="cell-symbol">Xe</span><span class="cell-name">Xénon</span>
-                </div>
+                </label>
 
                 <!-- Linha 6 -->
-                <div class="cell" style="grid-column:1;grid-row:6;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:6;background:var(--cat-alkali-metals)">
                     <span class="cell-number">55</span><span class="cell-symbol">Cs</span><span class="cell-name">Césio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:6;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:6;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">56</span><span class="cell-symbol">Ba</span><span class="cell-name">Bário</span>
-                </div>
-                <div class="cell" style="grid-column:3;grid-row:6;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:3;grid-row:6;background:var(--cat-lanthanides)">
                     <span class="cell-number">57</span><span class="cell-symbol">La</span><span class="cell-name">Lantânio</span>
-                </div>
-                <div class="cell" style="grid-column:4;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:4;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">72</span><span class="cell-symbol">Hf</span><span class="cell-name">Háfnio</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:5;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">73</span><span class="cell-symbol">Ta</span><span class="cell-name">Tântalo</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:6;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">74</span><span class="cell-symbol">W</span><span class="cell-name">Tungsténio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:7;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">75</span><span class="cell-symbol">Re</span><span class="cell-name">Rénio</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:8;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">76</span><span class="cell-symbol">Os</span><span class="cell-name">Ósmio</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:9;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">77</span><span class="cell-symbol">Ir</span><span class="cell-name">Irídio</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:10;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">78</span><span class="cell-symbol">Pt</span><span class="cell-name">Platina</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:11;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">79</span><span class="cell-symbol">Au</span><span class="cell-name">Ouro</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:6;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:12;grid-row:6;background:var(--cat-transition-metals)">
                     <span class="cell-number">80</span><span class="cell-symbol">Hg</span><span class="cell-name">Mercúrio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:6;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:13;grid-row:6;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">81</span><span class="cell-symbol">Tl</span><span class="cell-name">Tálio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:6;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:14;grid-row:6;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">82</span><span class="cell-symbol">Pb</span><span class="cell-name">Chumbo</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:6;background:var(--cat-post-transition-metals)">
+                </label>
+                <label class="cell" for="f-post-transition-metals" style="grid-column:15;grid-row:6;background:var(--cat-post-transition-metals)">
                     <span class="cell-number">83</span><span class="cell-symbol">Bi</span><span class="cell-name">Bismuto</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:6;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:16;grid-row:6;background:var(--cat-metalloids)">
                     <span class="cell-number">84</span><span class="cell-symbol">Po</span><span class="cell-name">Polônio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:6;background:var(--cat-metalloids)">
+                </label>
+                <label class="cell" for="f-metalloids" style="grid-column:17;grid-row:6;background:var(--cat-metalloids)">
                     <span class="cell-number">85</span><span class="cell-symbol">At</span><span class="cell-name">Ástato</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:6;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:6;background:var(--cat-noble-gases)">
                     <span class="cell-number">86</span><span class="cell-symbol">Rn</span><span class="cell-name">Rádon</span>
-                </div>
+                </label>
 
                 <!-- Linha 7 -->
-                <div class="cell" style="grid-column:1;grid-row:7;background:var(--cat-alkali-metals)">
+                <label class="cell" for="f-alkali-metals" style="grid-column:1;grid-row:7;background:var(--cat-alkali-metals)">
                     <span class="cell-number">87</span><span class="cell-symbol">Fr</span><span class="cell-name">Frâncio</span>
-                </div>
-                <div class="cell" style="grid-column:2;grid-row:7;background:var(--cat-alkaline-earth-metals)">
+                </label>
+                <label class="cell" for="f-alkaline-earth-metals" style="grid-column:2;grid-row:7;background:var(--cat-alkaline-earth-metals)">
                     <span class="cell-number">88</span><span class="cell-symbol">Ra</span><span class="cell-name">Rádio</span>
-                </div>
-                <div class="cell" style="grid-column:3;grid-row:7;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:3;grid-row:7;background:var(--cat-actinides)">
                     <span class="cell-number">89</span><span class="cell-symbol">Ac</span><span class="cell-name">Actínio</span>
-                </div>
-                <div class="cell" style="grid-column:4;grid-row:7;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:4;grid-row:7;background:var(--cat-transition-metals)">
                     <span class="cell-number">104</span><span class="cell-symbol">Rf</span><span class="cell-name">Rutherfórdio</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:7;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:5;grid-row:7;background:var(--cat-transition-metals)">
                     <span class="cell-number">105</span><span class="cell-symbol">Db</span><span class="cell-name">Dúbnio</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:7;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:6;grid-row:7;background:var(--cat-transition-metals)">
                     <span class="cell-number">106</span><span class="cell-symbol">Sg</span><span class="cell-name">Seabórgio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:7;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:7;grid-row:7;background:var(--cat-transition-metals)">
                     <span class="cell-number">107</span><span class="cell-symbol">Bh</span><span class="cell-name">Bóhrio</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:7;background:var(--cat-transition-metals)">
+                </label>
+                <label class="cell" for="f-transition-metals" style="grid-column:8;grid-row:7;background:var(--cat-transition-metals)">
                     <span class="cell-number">108</span><span class="cell-symbol">Hs</span><span class="cell-name">Hássio</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:9;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">109</span><span class="cell-symbol">Mt</span><span class="cell-name">Meitnério</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:10;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">110</span><span class="cell-symbol">Ds</span><span class="cell-name">Darmstádtio</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:11;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">111</span><span class="cell-symbol">Rg</span><span class="cell-name">Roentgênio</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:12;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">112</span><span class="cell-symbol">Cn</span><span class="cell-name">Copernício</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:13;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">113</span><span class="cell-symbol">Nh</span><span class="cell-name">Nihônio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:14;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">114</span><span class="cell-symbol">Fl</span><span class="cell-name">Fleróvio</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:15;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">115</span><span class="cell-symbol">Mc</span><span class="cell-name">Moscóvio</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:16;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">116</span><span class="cell-symbol">Lv</span><span class="cell-name">Livermório</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:7;background:var(--cat-unknown-properties)">
+                </label>
+                <label class="cell" for="f-unknown-properties" style="grid-column:17;grid-row:7;background:var(--cat-unknown-properties)">
                     <span class="cell-number">117</span><span class="cell-symbol">Ts</span><span class="cell-name">Tenesso</span>
-                </div>
-                <div class="cell" style="grid-column:18;grid-row:7;background:var(--cat-noble-gases)">
+                </label>
+                <label class="cell" for="f-noble-gases" style="grid-column:18;grid-row:7;background:var(--cat-noble-gases)">
                     <span class="cell-number">118</span><span class="cell-symbol">Og</span><span class="cell-name">Oganessônio</span>
-                </div>
+                </label>
 
                 <!-- Linha 9 -->
-                <div class="cell" style="grid-column:4;grid-row:9;background:var(--cat-lanthanides)">
+                <label class="cell" for="f-lanthanides" style="grid-column:4;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">58</span><span class="cell-symbol">Ce</span><span class="cell-name">Cério</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:5;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">59</span><span class="cell-symbol">Pr</span><span class="cell-name">Praseodímio</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:6;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">60</span><span class="cell-symbol">Nd</span><span class="cell-name">Neodímio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:7;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">61</span><span class="cell-symbol">Pm</span><span class="cell-name">Promécio</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:8;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">62</span><span class="cell-symbol">Sm</span><span class="cell-name">Samário</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:9;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">63</span><span class="cell-symbol">Eu</span><span class="cell-name">Európio</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:10;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">64</span><span class="cell-symbol">Gd</span><span class="cell-name">Gadolínio</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:11;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">65</span><span class="cell-symbol">Tb</span><span class="cell-name">Térbio</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:12;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">66</span><span class="cell-symbol">Dy</span><span class="cell-name">Disprósio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:13;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">67</span><span class="cell-symbol">Ho</span><span class="cell-name">Hólmio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:14;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">68</span><span class="cell-symbol">Er</span><span class="cell-name">Érbio</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:15;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">69</span><span class="cell-symbol">Tm</span><span class="cell-name">Túlio</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:16;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">70</span><span class="cell-symbol">Yb</span><span class="cell-name">Itérbio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:9;background:var(--cat-lanthanides)">
+                </label>
+                <label class="cell" for="f-lanthanides" style="grid-column:17;grid-row:9;background:var(--cat-lanthanides)">
                     <span class="cell-number">71</span><span class="cell-symbol">Lu</span><span class="cell-name">Lutécio</span>
-                </div>
+                </label>
 
                 <!-- Linha 10 -->
-                <div class="cell" style="grid-column:4;grid-row:10;background:var(--cat-actinides)">
+                <label class="cell" for="f-actinides" style="grid-column:4;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">90</span><span class="cell-symbol">Th</span><span class="cell-name">Tório</span>
-                </div>
-                <div class="cell" style="grid-column:5;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:5;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">91</span><span class="cell-symbol">Pa</span><span class="cell-name">Protactínio</span>
-                </div>
-                <div class="cell" style="grid-column:6;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:6;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">92</span><span class="cell-symbol">U</span><span class="cell-name">Urânio</span>
-                </div>
-                <div class="cell" style="grid-column:7;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:7;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">93</span><span class="cell-symbol">Np</span><span class="cell-name">Neptúnio</span>
-                </div>
-                <div class="cell" style="grid-column:8;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:8;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">94</span><span class="cell-symbol">Pu</span><span class="cell-name">Plutônio</span>
-                </div>
-                <div class="cell" style="grid-column:9;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:9;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">95</span><span class="cell-symbol">Am</span><span class="cell-name">Amerício</span>
-                </div>
-                <div class="cell" style="grid-column:10;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:10;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">96</span><span class="cell-symbol">Cm</span><span class="cell-name">Cúrio</span>
-                </div>
-                <div class="cell" style="grid-column:11;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:11;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">97</span><span class="cell-symbol">Bk</span><span class="cell-name">Berkélio</span>
-                </div>
-                <div class="cell" style="grid-column:12;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:12;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">98</span><span class="cell-symbol">Cf</span><span class="cell-name">Califórnio</span>
-                </div>
-                <div class="cell" style="grid-column:13;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:13;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">99</span><span class="cell-symbol">Es</span><span class="cell-name">Einstênio</span>
-                </div>
-                <div class="cell" style="grid-column:14;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:14;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">100</span><span class="cell-symbol">Fm</span><span class="cell-name">Férmio</span>
-                </div>
-                <div class="cell" style="grid-column:15;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:15;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">101</span><span class="cell-symbol">Md</span><span class="cell-name">Mendelévio</span>
-                </div>
-                <div class="cell" style="grid-column:16;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:16;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">102</span><span class="cell-symbol">No</span><span class="cell-name">Nobélio</span>
-                </div>
-                <div class="cell" style="grid-column:17;grid-row:10;background:var(--cat-actinides)">
+                </label>
+                <label class="cell" for="f-actinides" style="grid-column:17;grid-row:10;background:var(--cat-actinides)">
                     <span class="cell-number">103</span><span class="cell-symbol">Lr</span><span class="cell-name">Laurêncio</span>
-                </div>
+                </label>
 
             </div>
         </div>
+
+        <!-- Legenda de categorias -->
+        <div class="cat-legend">
+            <label for="f-all" class="cat-legend-item cat-legend-all">Todos</label>
+            <label for="f-alkali-metals" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-alkali-metals)"></span>
+                Metais Alcalinos
+            </label>
+            <label for="f-alkaline-earth-metals" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-alkaline-earth-metals)"></span>
+                Metais Alcalino-Terrosos
+            </label>
+            <label for="f-transition-metals" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-transition-metals)"></span>
+                Metais de Transição
+            </label>
+            <label for="f-post-transition-metals" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-post-transition-metals)"></span>
+                Metais Pós-Transição
+            </label>
+            <label for="f-metalloids" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-metalloids)"></span>
+                Metaloides
+            </label>
+            <label for="f-reactive-nonmetals" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-reactive-nonmetals)"></span>
+                Não-Metais Reativos
+            </label>
+            <label for="f-noble-gases" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-noble-gases)"></span>
+                Gases Nobres
+            </label>
+            <label for="f-lanthanides" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-lanthanides)"></span>
+                Lantanídeos
+            </label>
+            <label for="f-actinides" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-actinides)"></span>
+                Actinídeos
+            </label>
+            <label for="f-unknown-properties" class="cat-legend-item">
+                <span class="cat-swatch" style="background:var(--cat-unknown-properties)"></span>
+                Propriedades Desconhecidas
+            </label>
+        </div>
+
+        <!-- Botões de navegação para páginas de categoria -->
+        <div class="cat-nav">
+            <a href="categorias/alkali-metals/index.html"         class="cat-nav-btn" style="background:var(--cat-alkali-metals)">Metais Alcalinos</a>
+            <a href="categorias/alkaline-earth-metals/index.html" class="cat-nav-btn" style="background:var(--cat-alkaline-earth-metals)">Metais Alcalino-Terrosos</a>
+            <a href="categorias/transition-metals/index.html"     class="cat-nav-btn" style="background:var(--cat-transition-metals)">Metais de Transição</a>
+            <a href="categorias/post-transition-metals/index.html"class="cat-nav-btn" style="background:var(--cat-post-transition-metals)">Metais Pós-Transição</a>
+            <a href="categorias/metalloids/index.html"            class="cat-nav-btn" style="background:var(--cat-metalloids)">Metaloides</a>
+            <a href="categorias/reactive-nonmetals/index.html"    class="cat-nav-btn" style="background:var(--cat-reactive-nonmetals)">Não-Metais Reativos</a>
+            <a href="categorias/noble-gases/index.html"           class="cat-nav-btn" style="background:var(--cat-noble-gases)">Gases Nobres</a>
+            <a href="categorias/lanthanides/index.html"           class="cat-nav-btn" style="background:var(--cat-lanthanides)">Lantanídeos</a>
+            <a href="categorias/actinides/index.html"             class="cat-nav-btn" style="background:var(--cat-actinides)">Actinídeos</a>
+            <a href="categorias/unknown-properties/index.html"    class="cat-nav-btn" style="background:var(--cat-unknown-properties)">Propriedades Desconhecidas</a>
+        </div>
+
     </main>
 
-    <footer>
-        <p>Tabela Periódica &copy; 2025/2026 &middot; Guilherme Mestre &amp; Igor Pinto &middot; IPW &middot; IPS Setúbal</p>
-    </footer>
+
 
 </body>
 </html>
